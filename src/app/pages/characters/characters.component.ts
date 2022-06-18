@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Character } from '../../models/character.model';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CharactersService } from '../../services/characters.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { CharactersService } from '../../services/characters.service';
 export class CharactersComponent implements OnInit, OnDestroy {
   characters: Character[] | undefined;
   charactersSubscription = new Subscription();
+  loading$: Observable<boolean> | undefined;
 
   constructor(private charactersService: CharactersService) {}
 
@@ -20,6 +21,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
       .subscribe((charactersData) => {
         this.characters = charactersData.results;
       });
+    this.loading$ = this.charactersService.getLoadingState();
   }
 
   ngOnDestroy(): void {
