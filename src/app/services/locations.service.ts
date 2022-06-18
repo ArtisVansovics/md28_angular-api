@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, finalize, Observable, take } from 'rxjs';
-import { CharactersData } from '../models/character.model';
+import { LocationsData } from '../models/location.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CharactersService {
-  baseUrl = 'https://rickandmortyapi.com/api/character/';
+export class LocationsService {
+  baseUrl = 'https://rickandmortyapi.com/api/location/';
   loading = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<CharactersData> {
+  getLocations(): Observable<LocationsData> {
     this.loading.next(true);
 
-    return this.http.get<CharactersData>(this.baseUrl).pipe(
+    return this.http.get<LocationsData>(this.baseUrl).pipe(
       take(1),
       catchError((error) => {
         console.log(error);
