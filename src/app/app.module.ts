@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './components/button/button.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { LocationsComponent } from './pages/locations/locations.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { LocationsComponent } from './pages/locations/locations.component';
     CharactersComponent,
     LocationsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
