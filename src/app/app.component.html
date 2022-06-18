@@ -1,4 +1,11 @@
-<div id="app">
-  <h1>App test</h1>
-  <app-button buttonTitle="test"></app-button>
+<nav class="nav">
+  <a class="nav__link" routerLink="/characters" routerLinkActive="active">
+    Characters
+  </a>
+  <a class="nav__link" routerLink="/locations" routerLinkActive="active">
+    Locations
+  </a>
+</nav>
+<div class="wrapper">
+  <router-outlet></router-outlet>
 </div>
