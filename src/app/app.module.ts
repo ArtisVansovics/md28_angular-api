@@ -7,6 +7,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CharacterCardComponent } from './pages/characters/character-card/character-card.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonComponent,
     CharactersComponent,
     LocationsComponent,
+    CharacterCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

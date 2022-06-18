@@ -1,0 +1,25 @@
+.card {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 25px 20px;
+  border-radius: 10px 20px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #D9BF41;
+  box-shadow: #F2EDA0 0 0 10px 3px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.img {
+  border-radius: 50%;
+  border: #A0D9D3 4px inset;
+  width: 80%;
+}
