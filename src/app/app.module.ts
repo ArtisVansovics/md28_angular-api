@@ -8,6 +8,8 @@ import { CharactersComponent } from './pages/characters/characters.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CharacterCardComponent } from './pages/characters/character-card/character-card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CharacterFormComponent } from './pages/characters/character-form/character-form.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,15 @@ import { CharacterCardComponent } from './pages/characters/character-card/charac
     CharactersComponent,
     LocationsComponent,
     CharacterCardComponent,
+    CharacterFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

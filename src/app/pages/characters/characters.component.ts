@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { CharactersService } from '../../services/characters.service';
-import { Character } from '../../models/character.model';
+import { Character, CharacterQuery } from '../../models/character.model';
 
 @Component({
   selector: 'app-characters',
@@ -10,6 +10,8 @@ import { Character } from '../../models/character.model';
 })
 export class CharactersComponent implements OnInit, OnDestroy {
   characters: Character[] | undefined;
+  nameQuery = '';
+  genderQuery = '';
   charactersSubscription = new Subscription();
   loading$: Observable<boolean> | undefined;
 
@@ -17,7 +19,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.charactersSubscription = this.charactersService
-      .getCharacters()
+      .getCharacters('', '')
       .subscribe((charactersData) => {
         this.characters = charactersData.results;
       });
@@ -26,5 +28,14 @@ export class CharactersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.charactersSubscription.unsubscribe();
+  }
+
+  searchCharacter(characterQuery: CharacterQuery): void {
+    this.charactersSubscription = this.charactersService
+      .getCharacters(characterQuery.name, characterQuery.gender)
+      .subscribe((charactersData) => {
+        this.characters = charactersData.results;
+      });
+    this.loading$ = this.charactersService.getLoadingState();
   }
 }
