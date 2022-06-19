@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px 20px 25px;
+  font-size: 18px;
+}
+
+.input {
+  background-color: #F2EDA0;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+
+  &:focus {
+    outline: #D9CCC5 3px solid;
+  }
+}
+
+.select {
+  background-color: #F2EDA0;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:focus {
+    outline: #D9CCC5 3px solid;
+  }
+}

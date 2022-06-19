@@ -1,0 +1,19 @@
+<form [formGroup]="charactersForm" class="form">
+  <input
+    formControlName="name"
+    class="input"
+    type="text"
+    placeholder="Search by name" />
+  <select formControlName="gender" class="select">
+    <option selected value="">No selection</option>
+    <option
+      *ngFor="let genderOption of genderOptions"
+      [value]="genderOption.value">
+      {{ genderOption.name }}
+    </option>
+  </select>
+  <app-button
+    buttonTitle="Search"
+    (buttonClickEvent)="searchCharacters()"
+    [isDisabled]="!charactersForm.valid"></app-button>
+</form>
