@@ -1,3 +1,7 @@
 <span *ngIf="loading$ | async">Loading...</span>
 
-<p *ngFor="let location of locations">{{ location.name }}</p>
+<div class="grid">
+  <app-location-card
+    *ngFor="let location of locations"
+    [location]="location"></app-location-card>
+</div>

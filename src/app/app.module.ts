@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CharacterCardComponent } from './pages/characters/character-card/character-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CharacterFormComponent } from './pages/characters/character-form/character-form.component';
+import { LocationFormComponent } from './pages/locations/location-form/location-form.component';
+import { LocationCardComponent } from './pages/locations/location-card/location-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { CharacterFormComponent } from './pages/characters/character-form/charac
     LocationsComponent,
     CharacterCardComponent,
     CharacterFormComponent,
+    LocationFormComponent,
+    LocationCardComponent,
   ],
   imports: [
     BrowserModule,

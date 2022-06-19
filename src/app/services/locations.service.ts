@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, catchError, finalize, Observable, take } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, Observable } from 'rxjs';
 import { LocationsData } from '../models/location.model';
 
 @Injectable({
@@ -16,7 +16,6 @@ export class LocationsService {
     this.loading.next(true);
 
     return this.http.get<LocationsData>(this.baseUrl).pipe(
-      take(1),
       catchError((error) => {
         console.log(error);
         throw error;
