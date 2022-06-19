@@ -10,8 +10,6 @@ import { Character, CharacterQuery } from '../../models/character.model';
 })
 export class CharactersComponent implements OnInit, OnDestroy {
   characters: Character[] | undefined;
-  nameQuery = '';
-  genderQuery = '';
   charactersSubscription = new Subscription();
   loading$: Observable<boolean> | undefined;
 

@@ -12,8 +12,6 @@
       {{ genderOption.name }}
     </option>
   </select>
-  <app-button
-    buttonTitle="Search"
-    (buttonClickEvent)="searchCharacters()"
-    [isDisabled]="!charactersForm.valid"></app-button>
+  <app-button buttonTitle="Search" (buttonClickEvent)="searchCharacters()">
+  </app-button>
 </form>

@@ -14,3 +14,8 @@ export interface Location {
   url: string;
   created: string;
 }
+
+export interface LocationQuery {
+  name: string;
+  dimension: string;
+}

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { LocationsService } from '../../services/locations.service';
-import { Location } from '../../models/location.model';
+import { Location, LocationQuery } from '../../models/location.model';
 
 @Component({
   selector: 'app-locations',
@@ -17,7 +17,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.locationsSubscription = this.locationsService
-      .getLocations()
+      .getLocations('', '')
       .subscribe((locationsData) => {
         this.locations = locationsData.results;
       });
@@ -26,5 +26,14 @@ export class LocationsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.locationsSubscription.unsubscribe();
+  }
+
+  searchLocation(locationQuery: LocationQuery): void {
+    this.locationsSubscription = this.locationsService
+      .getLocations(locationQuery.name, locationQuery.dimension)
+      .subscribe((locationsData) => {
+        this.locations = locationsData.results;
+      });
+    this.loading$ = this.locationsService.getLoadingState();
   }
 }

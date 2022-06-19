@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CharacterQuery } from '../../../models/character.model';
 
 @Component({
@@ -39,7 +39,7 @@ export class CharacterFormComponent implements OnInit {
 
   buildForm(): void {
     this.charactersForm = this.fb.group({
-      name: ['', [Validators.required]],
+      name: '',
       gender: '',
     });
   }

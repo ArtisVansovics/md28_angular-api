@@ -12,16 +12,18 @@ export class LocationsService {
 
   constructor(private http: HttpClient) {}
 
-  getLocations(): Observable<LocationsData> {
+  getLocations(name: string, dimension: string): Observable<LocationsData> {
     this.loading.next(true);
 
-    return this.http.get<LocationsData>(this.baseUrl).pipe(
-      catchError((error) => {
-        console.log(error);
-        throw error;
-      }),
-      finalize(() => this.loading.next(false))
-    );
+    return this.http
+      .get<LocationsData>(`${this.baseUrl}?name=${name}&dimension=${dimension}`)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        }),
+        finalize(() => this.loading.next(false))
+      );
   }
 
   getLoadingState(): Observable<boolean> {
