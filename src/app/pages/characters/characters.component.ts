@@ -22,6 +22,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
       .subscribe((charactersData) => {
         this.characters = charactersData.results;
       });
+
     this.loading$ = this.charactersService.getLoadingState();
   }
 
@@ -37,6 +38,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
       .subscribe((charactersData) => {
         this.characters = charactersData.results;
       });
+
     this.loading$ = this.charactersService.getLoadingState();
     this.error$ = this.charactersService.getErrorMessage();
   }

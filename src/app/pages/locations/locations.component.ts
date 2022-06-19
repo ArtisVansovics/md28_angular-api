@@ -22,6 +22,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
       .subscribe((locationsData) => {
         this.locations = locationsData.results;
       });
+
     this.loading$ = this.locationsService.getLoadingState();
   }
 
@@ -37,6 +38,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
       .subscribe((locationsData) => {
         this.locations = locationsData.results;
       });
+
     this.loading$ = this.locationsService.getLoadingState();
     this.error$ = this.locationsService.getErrorMessage();
   }
