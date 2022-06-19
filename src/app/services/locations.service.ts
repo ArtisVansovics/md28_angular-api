@@ -9,18 +9,19 @@ import { LocationsData } from '../models/location.model';
 export class LocationsService {
   baseUrl = 'https://rickandmortyapi.com/api/location/';
   loading = new BehaviorSubject(false);
-  errorMessage = new BehaviorSubject('');
+  error = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {}
 
   getLocations(name: string, dimension: string): Observable<LocationsData> {
+    this.error.next(false);
     this.loading.next(true);
 
     return this.http
       .get<LocationsData>(`${this.baseUrl}?name=${name}&dimension=${dimension}`)
       .pipe(
         catchError((error) => {
-          this.errorMessage.next(error.message);
+          this.error.next(true);
           console.log(error);
           throw error;
         }),
@@ -32,7 +33,7 @@ export class LocationsService {
     return this.loading.asObservable();
   }
 
-  getErrorMessage(): Observable<string> {
-    return this.errorMessage.asObservable();
+  getErrorMessage(): Observable<boolean> {
+    return this.error.asObservable();
   }
 }

@@ -12,7 +12,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
   locations: Location[] | undefined;
   locationsSubscription = new Subscription();
   loading$: Observable<boolean> | undefined;
-  error$: Observable<string> | undefined;
+  error$: Observable<boolean> | undefined;
 
   constructor(private locationsService: LocationsService) {}
 
@@ -30,6 +30,8 @@ export class LocationsComponent implements OnInit, OnDestroy {
   }
 
   searchLocation(locationQuery: LocationQuery): void {
+    this.locations = [] as Location[];
+
     this.locationsSubscription = this.locationsService
       .getLocations(locationQuery.name, locationQuery.dimension)
       .subscribe((locationsData) => {

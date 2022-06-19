@@ -12,7 +12,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
   characters: Character[] | undefined;
   charactersSubscription = new Subscription();
   loading$: Observable<boolean> | undefined;
-  error$: Observable<string> | undefined;
+  error$: Observable<boolean> | undefined;
 
   constructor(private charactersService: CharactersService) {}
 
@@ -30,6 +30,8 @@ export class CharactersComponent implements OnInit, OnDestroy {
   }
 
   searchCharacter(characterQuery: CharacterQuery): void {
+    this.characters = [] as Character[];
+
     this.charactersSubscription = this.charactersService
       .getCharacters(characterQuery.name, characterQuery.gender)
       .subscribe((charactersData) => {
