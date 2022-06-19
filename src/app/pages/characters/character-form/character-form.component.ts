@@ -50,6 +50,10 @@ export class CharacterFormComponent implements OnInit {
         name: this.charactersForm.value.name,
         gender: this.charactersForm.value.gender,
       });
+      // this.charactersForm.patchValue({
+      //   name: '',
+      //   gender: '',
+      // });
     }
   }
 }

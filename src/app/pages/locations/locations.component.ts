@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { LocationsService } from '../../services/locations.service';
 import { Location, LocationQuery } from '../../models/location.model';
 
@@ -11,8 +11,8 @@ import { Location, LocationQuery } from '../../models/location.model';
 export class LocationsComponent implements OnInit, OnDestroy {
   locations: Location[] | undefined;
   locationsSubscription = new Subscription();
-  loading$: Observable<boolean> | undefined;
-  error$: Observable<boolean> | undefined;
+  loading$ = this.locationsService.getLoadingState();
+  error$ = this.locationsService.getErrorMessage();
 
   constructor(private locationsService: LocationsService) {}
 
@@ -22,8 +22,6 @@ export class LocationsComponent implements OnInit, OnDestroy {
       .subscribe((locationsData) => {
         this.locations = locationsData.results;
       });
-
-    this.loading$ = this.locationsService.getLoadingState();
   }
 
   ngOnDestroy(): void {
@@ -38,8 +36,5 @@ export class LocationsComponent implements OnInit, OnDestroy {
       .subscribe((locationsData) => {
         this.locations = locationsData.results;
       });
-
-    this.loading$ = this.locationsService.getLoadingState();
-    this.error$ = this.locationsService.getErrorMessage();
   }
 }
