@@ -1,9 +1,11 @@
 <app-character-form (searchCharactersEvent)="searchCharacter($event)">
 </app-character-form>
 
-<span *ngIf="loading$ | async">Loading...</span>
+<h2 *ngIf="loading$ | async">Loading...</h2>
 
-<div class="grid">
+<h2 *ngIf="error$ | async" class="error">No query matches the search</h2>
+
+<div *ngIf="characters" class="grid">
   <app-character-card
     *ngFor="let character of characters"
     [character]="character">

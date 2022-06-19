@@ -12,6 +12,7 @@ export class CharactersComponent implements OnInit, OnDestroy {
   characters: Character[] | undefined;
   charactersSubscription = new Subscription();
   loading$: Observable<boolean> | undefined;
+  error$: Observable<string> | undefined;
 
   constructor(private charactersService: CharactersService) {}
 
@@ -35,5 +36,6 @@ export class CharactersComponent implements OnInit, OnDestroy {
         this.characters = charactersData.results;
       });
     this.loading$ = this.charactersService.getLoadingState();
+    this.error$ = this.charactersService.getErrorMessage();
   }
 }

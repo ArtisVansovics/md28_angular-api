@@ -12,6 +12,7 @@ export class LocationsComponent implements OnInit, OnDestroy {
   locations: Location[] | undefined;
   locationsSubscription = new Subscription();
   loading$: Observable<boolean> | undefined;
+  error$: Observable<string> | undefined;
 
   constructor(private locationsService: LocationsService) {}
 
@@ -35,5 +36,6 @@ export class LocationsComponent implements OnInit, OnDestroy {
         this.locations = locationsData.results;
       });
     this.loading$ = this.locationsService.getLoadingState();
+    this.error$ = this.locationsService.getErrorMessage();
   }
 }
