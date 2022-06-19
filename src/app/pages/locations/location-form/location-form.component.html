@@ -1,0 +1,14 @@
+<form [formGroup]="locationsForm" class="form">
+  <input
+    formControlName="name"
+    class="input"
+    type="text"
+    placeholder="Search by name" />
+  <input
+    formControlName="dimension"
+    class="input"
+    type="text"
+    placeholder="Search by dimension" />
+  <app-button buttonTitle="Search" (buttonClickEvent)="searchLocations()">
+  </app-button>
+</form>
